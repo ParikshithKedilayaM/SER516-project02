@@ -12,7 +12,6 @@ public class Circle extends Shapes {
 	double x, y;
 	Shape circle = null;
 	public Circle(double x, double y) {
-		// TODO Auto-generated constructor stub
 		this.x = x - 50;
 		this.y = y - 50;
 		
