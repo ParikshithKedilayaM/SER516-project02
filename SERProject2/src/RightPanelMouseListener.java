@@ -10,6 +10,7 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 	Shapes selectedShape;
 	@Override
 	public void mouseDragged(MouseEvent e) {
+		
 		if (selectedShape != null) {
 			
 			selectedShape.setX(e.getX());
@@ -17,6 +18,10 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 		}
 
 		Frame.rightPanel.repaint();
+		
+		
+	
+		
 	}
 
 	@Override
@@ -25,6 +30,7 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		if(!Dot.isDotClicked) {
 		int x = e.getX() ;
 		int y = e.getY();
 
@@ -44,6 +50,7 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 		}
 		
 		Frame.rightPanel.repaint();
+		}
 	}
 
 	@Override

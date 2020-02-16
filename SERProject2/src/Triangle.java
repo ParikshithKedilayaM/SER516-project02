@@ -10,6 +10,7 @@ import java.awt.geom.Path2D;
 public class Triangle extends Shapes {
 	double x, y;
 	Path2D path = null;
+	Shapes dot1 = null, dot2 = null, dot3= null;
 	public Triangle(double x, double y) {
 		// TODO Auto-generated constructor stub
 		this.x = x - 50;
@@ -31,9 +32,12 @@ public class Triangle extends Shapes {
 		path.lineTo(x1 + 200, y1);
 		path.closePath();
 		Graphics2D g2 = (Graphics2D) graphic;
-		new Dot(x1+15, y1-15).drawShape(g2);
-		new Dot(x1+175, y1-15).drawShape(g2);
-		new Dot(x1+94, y1-135).drawShape(g2);
+		dot1 = new Dot(x1+15, y1-15);
+		dot1.drawShape(g2);
+		dot2 = new Dot(x1+175, y1-15);
+		dot2.drawShape(g2);
+		dot3 = new Dot(x1+94, y1-135);
+		dot3.drawShape(g2);
 		g2.draw(path);
 		
 		

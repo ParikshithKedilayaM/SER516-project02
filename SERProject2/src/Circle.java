@@ -11,6 +11,9 @@ import java.awt.geom.Ellipse2D;
 public class Circle extends Shapes {
 	double x, y;
 	Shape circle = null;
+	Shapes dot = null;
+
+	
 	public Circle(double x, double y) {
 		this.x = x - 50;
 		this.y = y - 50;
@@ -27,7 +30,8 @@ public class Circle extends Shapes {
 	public void drawShape(Graphics graphic) {
 		circle = new Ellipse2D.Double(x, y, 200, 200);
 		Graphics2D graphics2 = (Graphics2D) graphic;
-		new Dot(x+100-5, y+100-5).drawShape(graphics2);
+		dot = new Dot(x+100-5, y+100-5);
+		dot.drawShape(graphics2);
 		graphics2.draw(circle);		
 		
 	}
