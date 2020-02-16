@@ -14,7 +14,7 @@ import java.util.ListIterator;
  */
 public class Dot extends Shapes implements MouseListener {
 	double x, y;
-	boolean isConnected = false, isLineDrawn = false;
+	public boolean isConnected = false;
 	static boolean isDotClicked = false;
 	static int sX, sY, dX, dY;
 	static Shapes firstShape, secondShape;
@@ -79,7 +79,7 @@ public class Dot extends Shapes implements MouseListener {
 			Iterator<Shapes> shapeIterator = RightPanel.rightPanelShapes.iterator();
 			while (shapeIterator.hasNext()) {
 				Shapes shape = shapeIterator.next();
-				if (shape.containsPoint(e.getX(), e.getY())) {
+				if (shape.containsPoint(e.getX(), e.getY()) && !getIsLineDrawn(shape, e.getX(), e.getY())) {
 					RightPanel.originShape = shape;
 					System.out.println(shape.getClass());
 					firstShape = shape;
@@ -95,24 +95,14 @@ public class Dot extends Shapes implements MouseListener {
 
 		else if (!isConnected && RightPanel.isSelected && isDotClicked) {
 
-			ListIterator<Connections> linesOnRight = RightPanel.lines.listIterator();
-			boolean checkCircle = true;
-//			while (linesOnRight.hasNext()) {
-//				Connections conn = linesOnRight.next();
-//				if ((conn.getOriginShape() instanceof Circle || conn.getDestShape() instanceof Circle)
-//						&& (firstShape instanceof Circle || secondShape instanceof Circle)) {
-//					System.out.println("Circle check list");
-//					checkCircle = false;
-//				}
-//
-//			}
 
-			if (checkCircle && !RightPanel.originShape.containsPoint(e.getX(), e.getY())) {
+			if (!RightPanel.originShape.containsPoint(e.getX(), e.getY())) {
 				System.out.println("Second dot click");
 				Iterator<Shapes> shapeIterator = RightPanel.rightPanelShapes.iterator();
 				while (shapeIterator.hasNext()) {
 					Shapes shape = shapeIterator.next();
-					if (shape.containsPoint(e.getX(), e.getY())) {
+					if (shape.containsPoint(e.getX(), e.getY()) && !getIsLineDrawn(shape, e.getX(), e.getY())
+							&& !getIsLineDrawn(firstShape, e.getX(), e.getY())) {
 						dX = e.getX();
 						dY = e.getY();
 
@@ -127,18 +117,61 @@ public class Dot extends Shapes implements MouseListener {
 						RightPanel.lines.add(line);
 						System.out.println(line);
 						
+						///Find the shape
+						setIsLineDrawn(firstShape, e.getX(), e.getY());
+						setIsLineDrawn(secondShape, e.getX(), e.getY());
+						
 						break;
 					}
 				}
 
 				System.out.println("Hello mf");
-				RightPanel.isSelected = false;
-				RightPanel.isLineDrawable = true;
-				isDotClicked = false;
+				
 				Frame.rightPanel.repaint();
 			}
+			RightPanel.isSelected = false;
+			RightPanel.isLineDrawable = true;
+			isDotClicked = false;
 		}
 
+	}
+	
+	private void setIsLineDrawn(Shapes shape, int x, int y) {
+		if (shape instanceof Circle) {
+			Circle circle = ((Circle) shape);
+			circle.isLineDrawn = true;
+		} else if (shape instanceof Triangle) {
+			Triangle triangle = (Triangle) shape;
+			if (triangle.dot1.containsPoint(x, y)) {
+				triangle.isLineDrawnDot1 = true;
+				System.out.println("Triangle1");
+			} else if (triangle.dot2.containsPoint(x, y)) {
+				triangle.isLineDrawnDot2 = true;
+				System.out.println("Triangle2");
+			} else if (triangle.dot3.containsPoint(x, y)) {
+				triangle.isLineDrawnDot3 = true;
+				System.out.println("Triangle3");
+			}
+		}
+	}
+	private boolean getIsLineDrawn(Shapes shape, int x, int y) {
+		if (shape instanceof Circle) {
+			Circle temp = ((Circle) shape);
+			return temp.isLineDrawn;
+		} else if (shape instanceof Triangle) {
+			Triangle triangle = (Triangle) shape;
+			if (triangle.dot1.containsPoint(x, y)) {
+				System.out.println("T1"+triangle.isLineDrawnDot1);
+				return triangle.isLineDrawnDot1;
+			} else if (triangle.dot2.containsPoint(x, y)) {
+				System.out.println("T2"+triangle.isLineDrawnDot2);
+				return triangle.isLineDrawnDot2;
+			} else if (triangle.dot3.containsPoint(x, y)) {
+				System.out.println("T3"+triangle.isLineDrawnDot3);
+				return triangle.isLineDrawnDot3;
+			}
+		}
+		return false;
 	}
 
 	@Override

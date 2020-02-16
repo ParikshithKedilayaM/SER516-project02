@@ -12,6 +12,7 @@ public class Circle extends Shapes {
 	double x, y;
 	Shape circle = null;
 	Shapes dot = null;
+	boolean isLineDrawn = false;
 
 	
 	public Circle(double x, double y) {

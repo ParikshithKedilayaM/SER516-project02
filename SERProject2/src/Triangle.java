@@ -11,6 +11,7 @@ public class Triangle extends Shapes {
 	double x, y;
 	Path2D path = null;
 	Shapes dot1 = null, dot2 = null, dot3= null;
+	boolean isLineDrawnDot1 = false, isLineDrawnDot2 = false, isLineDrawnDot3 = false; 
 	public Triangle(double x, double y) {
 		// TODO Auto-generated constructor stub
 		this.x = x - 50;
