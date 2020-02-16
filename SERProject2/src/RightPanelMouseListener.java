@@ -21,8 +21,6 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		RightPanel.xLabel.setText(String.valueOf(e.getX()));
-		RightPanel.yLabel.setText(String.valueOf(e.getY()));
 	}
 
 	@Override

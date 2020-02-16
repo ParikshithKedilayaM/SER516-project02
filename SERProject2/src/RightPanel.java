@@ -1,9 +1,9 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -15,23 +15,23 @@ import javax.swing.JPanel;
  */
 public class RightPanel extends JPanel {
 	public static List<Shapes> rightPanelShapes = new ArrayList<Shapes> ();
-	static JLabel xLabel = new JLabel();
-	static JLabel yLabel = new JLabel();
 	private static final long serialVersionUID = 1L;
+	public static Shapes originShape;
+	public static Shapes destShape;
+	public static boolean isSelected = false;
 
 	public static RightPanelMouseListener rightPanelMouseListener = new RightPanelMouseListener();
 	public RightPanel() {
 		this.setBackground(Color.WHITE);
 		addMouseListener(rightPanelMouseListener);
 		addMouseMotionListener(rightPanelMouseListener);
-		xLabel.setText("X");
-		yLabel.setText("Y");
-		xLabel.setBounds(500, 5, 10, 10);
-		yLabel.setBounds(600, 5, 10, 10);
-		this.add(xLabel);
-		this.add(yLabel);
 	}
-
+	
+	
+	public static void drawLine() {
+	 Line2D shape = new Line2D.Double();
+     shape.setLine(originShape.getX(),originShape.getX(),originShape.getX(),originShape.getX());  
+	}
 	/**
 	 * Uses graphics to draw different shape components
 	 * @param graphics
