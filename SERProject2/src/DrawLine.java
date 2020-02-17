@@ -2,6 +2,7 @@
 public class DrawLine {
 	private int shapeX, shapeY, lineX, lineY;
 	private Connections line;
+	private boolean isSourceShape = false, isDestShape = false;
 	public int getShapeX() {
 		return shapeX;
 	}
@@ -31,6 +32,18 @@ public class DrawLine {
 	}
 	public void setLine(Connections line) {
 		this.line = line;
+	}
+	public boolean isSourceShape() {
+		return isSourceShape;
+	}
+	public void setSourceShape(boolean isSourceShape) {
+		this.isSourceShape = isSourceShape;
+	}
+	public boolean isDestShape() {
+		return isDestShape;
+	}
+	public void setDestShape(boolean isDestShape) {
+		this.isDestShape = isDestShape;
 	}
 	@Override
 	public String toString() {

@@ -11,7 +11,6 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 	
 	static Shapes selectedShape;
 	List<DrawLine> linesList = new ArrayList<DrawLine> ();
-	boolean isSourceShape = false, isDestShape = false;
 	
 	@Override
 	public void mouseDragged(MouseEvent e) {
@@ -22,10 +21,10 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 		ListIterator<DrawLine> linesListIter = linesList.listIterator();
 		while (linesListIter.hasNext()) {
 			DrawLine nextLine = linesListIter.next();
-			if (isSourceShape) {
+			if (nextLine.isSourceShape()) {
 				nextLine.getLine().setSourceX(nextLine.getLineX() - (nextLine.getShapeX()- selectedShape.getX()));
 				nextLine.getLine().setSourceY(nextLine.getLineY() - (nextLine.getShapeY() - selectedShape.getY()));
-			} else if (isDestShape) {
+			} else if (nextLine.isDestShape()) {
 				nextLine.getLine().setDestX(nextLine.getLineX() - (nextLine.getShapeX() - selectedShape.getX()));
 				nextLine.getLine().setDestY(nextLine.getLineY() - (nextLine.getShapeY() - selectedShape.getY()));
 			}
@@ -77,8 +76,8 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 				drawline.setShapeX(selectedShape.getX());
 				drawline.setShapeY(selectedShape.getY());
 				drawline.setLine(line);
-				linesList.add(drawline);
-				isSourceShape = true; 
+				drawline.setSourceShape(true);
+				linesList.add(drawline); 
 			} else if (line.getDestShape().equals(selectedShape)) {
 				DrawLine drawline = new DrawLine();
 				drawline.setLineX(line.getDestX());
@@ -86,8 +85,8 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 				drawline.setShapeX(selectedShape.getX());
 				drawline.setShapeY(selectedShape.getY());
 				drawline.setLine(line);
+				drawline.setDestShape(true);
 				linesList.add(drawline);
-				isDestShape = true; 
 			}
 		}
 		
@@ -95,8 +94,6 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		isSourceShape = false;
-		isDestShape = false;
 		selectedShape = null;
 		linesList.clear();
 	}
