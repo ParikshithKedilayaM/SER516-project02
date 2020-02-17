@@ -23,7 +23,7 @@ public class RightPanel extends JPanel {
 	public static int oX, oY, dX, dY;
 	public static boolean isSelected = false;
 	public static boolean isLineDrawable = false;
-
+	public static boolean isMoved = false;
 	public static RightPanelMouseListener rightPanelMouseListener = new RightPanelMouseListener();
 	public static Dot dot = new Dot();
 	public RightPanel() {
@@ -31,6 +31,7 @@ public class RightPanel extends JPanel {
 		addMouseListener(rightPanelMouseListener);
 		addMouseMotionListener(rightPanelMouseListener);
 		addMouseListener(dot);
+		addMouseMotionListener(dot);
 	}
 	
 	
@@ -55,7 +56,12 @@ public class RightPanel extends JPanel {
 				g2.draw(shape);
 			}
 		
-		
+			if(isMoved) {
+				Line2D shape = new Line2D.Double();
+				shape.setLine(oX,oY,dX,dY);
+				Graphics2D g2 = (Graphics2D) graphics;
+				g2.draw(shape);
+			}
 	}
 
 }
