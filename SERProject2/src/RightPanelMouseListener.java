@@ -9,58 +9,29 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 	public RightPanelMouseListener() {
 	}
 	
-	Shapes selectedShape;
-	Connections draggedShape;
-	boolean isSource = false;
-	List<Connections> triangleConn = new ArrayList<Connections>();
+	static Shapes selectedShape;
+	List<DrawLine> linesList = new ArrayList<DrawLine> ();
+	boolean isSourceShape = false, isDestShape = false;
+	
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		
 		if (selectedShape != null) {
-			
 			selectedShape.setX(e.getX());
 			selectedShape.setY(e.getY());
 		}
-		if (draggedShape != null) {
-
-			
-			if (isSource) {
-				if (draggedShape.getOriginShape() instanceof Circle) {
-					Circle circle = (Circle) selectedShape;
-					draggedShape.setSourceX(circle.dot.getX());
-					draggedShape.setSourceY(circle.dot.getY());
-				} else if (draggedShape.getOriginShape() instanceof Triangle) {
-					ListIterator<Connections> list = triangleConn.listIterator();
-//					while(list.hasNext()) {
-//						Connections next = list.next();
-//						next.setSourceX(selectedShape.);
-//						next.setSourceY(sourceY);
-//					}
-					
-					Triangle triangle =(Triangle) selectedShape;
-					Triangle triangle1 = (Triangle) draggedShape.getOriginShape();
-					
-				}
-
-			} else {
-				if (draggedShape.getDestShape() instanceof Circle) {
-					Circle circle = (Circle) selectedShape;
-					draggedShape.setDestX(circle.dot.getX());
-					draggedShape.setDestY(circle.dot.getY());
-				} else if (draggedShape.getDestShape() instanceof Triangle) {
-					Triangle triangle =(Triangle) selectedShape;
-					Triangle triangle1 = (Triangle) draggedShape.getDestShape();
-					
+		ListIterator<DrawLine> linesListIter = linesList.listIterator();
+		while (linesListIter.hasNext()) {
+			DrawLine nextLine = linesListIter.next();
+			if (isSourceShape) {
+				nextLine.getLine().setSourceX(nextLine.getLineX() - (nextLine.getShapeX()- selectedShape.getX()));
+				nextLine.getLine().setSourceY(nextLine.getLineY() - (nextLine.getShapeY() - selectedShape.getY()));
+			} else if (isDestShape) {
+				nextLine.getLine().setDestX(nextLine.getLineX() - (nextLine.getShapeX() - selectedShape.getX()));
+				nextLine.getLine().setDestY(nextLine.getLineY() - (nextLine.getShapeY() - selectedShape.getY()));
 			}
-
 		}
-		}
-
+		
 		Frame.rightPanel.repaint();
-		
-		
-	
-		
 	}
 
 	@Override
@@ -69,26 +40,19 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(!Dot.isDotClicked && !RightPanel.isMoved) {
-		int x = e.getX() ;
-		int y = e.getY();
-
-		
-		ShapesEnum selectedShape = LeftPanelMouseListener.getSelectedShape();
-		if (selectedShape == ShapesEnum.SQUARE) {
-			RightPanel.rightPanelShapes.add(new Square( x, y));
-
-		} else if (selectedShape == ShapesEnum.TRIANGLE) {
-			RightPanel.rightPanelShapes.add(new Triangle( x, y));
-
-		} else if (selectedShape == ShapesEnum.CIRCLE) {
-			Circle c = new Circle(x, y);
-			RightPanel.rightPanelShapes.add(c);
-			
-
-		}
-		
-		Frame.rightPanel.repaint();
+		if (!Dot.isDotClicked && !RightPanel.isMoved) {
+			int x = e.getX();
+			int y = e.getY();
+			ShapesEnum selectedShape = LeftPanelMouseListener.getSelectedShape();
+			if (selectedShape == ShapesEnum.SQUARE) {
+				RightPanel.rightPanelShapes.add(new Square(x, y));
+			} else if (selectedShape == ShapesEnum.TRIANGLE) {
+				RightPanel.rightPanelShapes.add(new Triangle(x, y));
+			} else if (selectedShape == ShapesEnum.CIRCLE) {
+				Circle c = new Circle(x, y);
+				RightPanel.rightPanelShapes.add(c);
+			}
+			Frame.rightPanel.repaint();
 		}
 	}
 
@@ -102,38 +66,39 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 			}
 	
 		}
-		if (selectedShape != null && selectedShape instanceof Circle) {
-			ListIterator<Connections> connection =RightPanel.lines.listIterator();
-			System.out.println(RightPanel.lines);
-			while (connection.hasNext()) {
-				Connections sh = connection.next();
-				Shapes sourceShape = sh.getOriginShape();
-				Shapes destShape = sh.getDestShape();
-				if(selectedShape==sourceShape) {
-					if(selectedShape instanceof Triangle) {
-						triangleConn.add(sh);
-					} else {
-						draggedShape = sh; 
-					}
-					isSource = true;
-				} else if (selectedShape == destShape) {
-					isSource = false;
-					if(selectedShape instanceof Triangle) {
-						triangleConn.add(sh);
-					} else {
-						draggedShape = sh; 
-					}
-				}
-				
+		ListIterator<Connections> lines = RightPanel.lines.listIterator();
+		while (lines.hasNext()) {
+			Connections line = lines.next();
+			
+			if (line.getOriginShape().equals(selectedShape)) {
+				DrawLine drawline = new DrawLine();
+				drawline.setLineX(line.getSourceX());
+				drawline.setLineY(line.getSourceY());
+				drawline.setShapeX(selectedShape.getX());
+				drawline.setShapeY(selectedShape.getY());
+				drawline.setLine(line);
+				linesList.add(drawline);
+				isSourceShape = true; 
+			} else if (line.getDestShape().equals(selectedShape)) {
+				DrawLine drawline = new DrawLine();
+				drawline.setLineX(line.getDestX());
+				drawline.setLineY(line.getDestY());
+				drawline.setShapeX(selectedShape.getX());
+				drawline.setShapeY(selectedShape.getY());
+				drawline.setLine(line);
+				linesList.add(drawline);
+				isDestShape = true; 
 			}
 		}
+		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		if(draggedShape != null) {
-			draggedShape = null;
-		}
+		isSourceShape = false;
+		isDestShape = false;
+		selectedShape = null;
+		linesList.clear();
 	}
 
 	@Override
