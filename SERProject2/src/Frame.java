@@ -17,16 +17,15 @@ public class Frame extends JFrame {
 	private final String title = "Team 1";
 	LeftPanel leftPanel;
 	public static RightPanel rightPanel;
+	static MenuBar menuBar;
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
 	public Frame() {
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		setLayout(null);
 		setTitle(title);
-		setVisible(true);
 		setBackground(Color.BLACK);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
 	}
 
 	/**
@@ -59,6 +58,11 @@ public class Frame extends JFrame {
 			e.printStackTrace();
 		}
 	}
+	
+	public void createMenu() {
+		menuBar = new MenuBar();
+		this.setJMenuBar(menuBar);
+	}
 
 	/**
 	 * Method to update shapes and shapesMap lists. 
@@ -72,7 +76,8 @@ public class Frame extends JFrame {
 		Frame frame = new Frame();
 		frame.createLeftPanel();
 		frame.createRightpanel();
-
+		frame.createMenu();
+		frame.setVisible(true);
 	}
 	
 }
