@@ -29,7 +29,7 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 				nextLine.getLine().setDestY(nextLine.getLineY() - (nextLine.getShapeY() - selectedShape.getY()));
 			}
 		}
-		
+		RightPanel.isSelected = false;
 		Frame.rightPanel.repaint();
 	}
 
@@ -39,7 +39,7 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if (!Dot.isDotClicked && !RightPanel.isMoved) {
+		if (!Dot.isDotClicked && !RightPanel.isMoved  &&!Dot.isBarClicked) {
 			int x = e.getX();
 			int y = e.getY();
 			ShapesEnum selectedShape = LeftPanelMouseListener.getSelectedShape();

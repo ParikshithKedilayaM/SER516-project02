@@ -1,16 +1,20 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.geom.Rectangle2D;
 
 /**
  *@author Raghavan
  *@version 1.0
  */
-public class Square extends Shapes {
+public class Square extends Shapes  {
 	
 	Shape square = null;
 	double x,y;
+	Shapes bar1 = null, bar2 = null;
 	public Square(double x, double y) {
 		// TODO Auto-generated constructor stub
 		this.x = x - 50;
@@ -26,8 +30,10 @@ public class Square extends Shapes {
 	public void drawShape(Graphics graphic) {
 		square = new Rectangle2D.Double(x , y , 200, 200);
 		Graphics2D graphics2 = (Graphics2D) graphic;
-		new VerticalBar(x+10, y +10).drawShape(graphics2);
-		new VerticalBar(x+180, y +10).drawShape(graphics2);
+		bar1 = new VerticalBar(x+10, y +10);
+		bar1.drawShape(graphics2);
+		bar2 = new VerticalBar(x+180, y +10);
+		bar2.drawShape(graphics2);
 		graphics2.draw(square);
 		
 		

@@ -22,10 +22,10 @@ public class RightPanel extends JPanel {
 	public static Shapes destShape;
 	public static int oX, oY, dX, dY;
 	public static boolean isSelected = false;
-	public static boolean isLineDrawable = false;
 	public static boolean isMoved = false;
 	public static RightPanelMouseListener rightPanelMouseListener = new RightPanelMouseListener();
 	public static Dot dot = new Dot();
+	
 	public RightPanel() {
 		this.setBackground(Color.WHITE);
 		addMouseListener(rightPanelMouseListener);
