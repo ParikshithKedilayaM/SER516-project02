@@ -18,10 +18,10 @@ public class LeftPanel extends JPanel {
 	 * to start. x from the left of the frame and y
 	 * from the top of the frame.
 	 */
-	static final int X_COORDINATE_SHAPES = 50;
+	static final int X_COORDINATE_SHAPES = 100;
 	static final int Y_COORDINATE_SQUARE = 100;
 	static final int Y_COORDINATE_CIRCLE = 350;
-	static final int Y_COORDINATE_TRIANGLE = 750;
+	static final int Y_COORDINATE_TRIANGLE = 650;
 
 	private static final long serialVersionUID = 1L;
 	/**

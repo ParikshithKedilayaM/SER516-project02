@@ -52,25 +52,21 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
 
 	@Override
 	public int getX() {
-		// TODO Auto-generated method stub
 		return (int) x;
 	}
 
 	@Override
 	public void setX(int x) {
-		// TODO Auto-generated method stub
 		this.x = x;
 	}
 
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
 		return (int) y;
 	}
 
 	@Override
 	public void setY(int y) {
-		// TODO Auto-generated method stub
 		this.y = y;
 	}
 
@@ -141,8 +137,6 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
 						line.setOriginShape(firstShape);
 						line.setDestShape(secondShape);
 						RightPanel.lines.add(line);
-
-						/// Find the shape
 						setIsLineDrawn(firstShape, sourceX, sourceY);
 						setIsLineDrawn(secondShape, e.getX(), e.getY());
 						firstDotClicked = false;
@@ -158,12 +152,10 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
 
 				Frame.rightPanel.repaint();
 			}
-//			RightPanel.isSelected = false;
 			isDotClicked = false;
 		}
 
 		else if ( RightPanel.isSelected && isBarClicked) {
-			System.out.println("Dropped on bar");
 			if (!RightPanel.originShape.containsPoint(e.getX(), e.getY())) {
 				Iterator<Shapes> shapeIterator = RightPanel.rightPanelShapes.iterator();
 				while (shapeIterator.hasNext()) {
@@ -180,7 +172,6 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
 						line.setOriginShape(firstShape);
 						line.setDestShape(secondShape);
 						RightPanel.lines.add(line);
-						System.out.println("set is line drawn");
 						setIsLineDrawn(firstShape, sourceX, sourceY);
 						firstDotClicked = false;
 						RightPanel.isMoved = false;
@@ -203,7 +194,7 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
 			Frame.rightPanel.setCursor(cursor);
 			Frame.rightPanel.setVisible(true);
 			RightPanel.isMoved = false;
-//			RightPanel.isSelected = false;
+			RightPanel.isSelected = false;
 		}
 
 	}
@@ -216,7 +207,6 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
 			Triangle triangle = (Triangle) shape;
 			if (triangle.dot1.containsPoint(x, y)) {
 				triangle.isLineDrawnDot1 = true;
-				System.out.println(triangle.isLineDrawnDot1);
 			} else if (triangle.dot2.containsPoint(x, y)) {
 				triangle.isLineDrawnDot2 = true;
 			} else if (triangle.dot3.containsPoint(x, y)) {
@@ -244,7 +234,6 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 		ListIterator<Shapes> shapes = RightPanel.rightPanelShapes.listIterator();
 		while (shapes.hasNext()) {
 			Shapes sh = shapes.next();
@@ -263,7 +252,6 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
 
 				else if (sh instanceof Square && (((Square) sh).bar1.containsPoint(e.getX(), e.getY())
 						|| ((Square) sh).bar2.containsPoint(e.getX(), e.getY()))) {
-					System.out.println("Bar clicked");
 					isBarClicked = true;
 					break;
 				}
@@ -279,36 +267,31 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
 		if (firstDotClicked) {
-			RightPanel.oX = sourceX;
-			RightPanel.oY = sourceY;
-			RightPanel.dX = e.getX();
-			RightPanel.dY = e.getY();
+			RightPanel.originX = sourceX;
+			RightPanel.originY = sourceY;
+			RightPanel.destinationX = e.getX();
+			RightPanel.destinationY = e.getY();
 			Frame.rightPanel.repaint();
 		}
 

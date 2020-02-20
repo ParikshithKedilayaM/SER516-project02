@@ -54,17 +54,14 @@ public class LeftPanelMouseListener extends MouseAdapter {
 			if (next instanceof Circle) {
 				if (next.containsPoint(x, y)) {
 					markIsClickedTrue(ShapesEnum.CIRCLE);
-					System.out.println("Circle clicked");
 				}
 			} else if (next instanceof Square) {
 				if (next.containsPoint(x, y)) {
 					markIsClickedTrue(ShapesEnum.SQUARE);
-					System.out.println("Square clicked");
 				}
 			} else if (next instanceof Triangle) {
 				if (next.containsPoint(x, y)) {
 					markIsClickedTrue(ShapesEnum.TRIANGLE);
-					System.out.println("Triangle clicked");
 				}
 			}
 		}

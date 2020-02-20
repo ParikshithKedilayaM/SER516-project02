@@ -1,6 +1,5 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -25,16 +24,15 @@ public class LoadFile extends JMenuItem implements ActionListener{
 			chosenFile.setFileFilter(filter);
 			int showOpenDialog  = chosenFile.showOpenDialog(null);
 			if (showOpenDialog == JFileChooser.APPROVE_OPTION) {
-			
-			fileName = chosenFile.getSelectedFile().getAbsolutePath();
-			fileIn = new FileInputStream(fileName);
-			
-			
-			in = new ObjectInputStream(fileIn);
 
-			RightPanel.lines = (ArrayList<Connections>) in.readObject();
-			RightPanel.rightPanelShapes = (ArrayList<Shapes>) in.readObject();
-			Frame.rightPanel.repaint();
+				fileName = chosenFile.getSelectedFile().getAbsolutePath();
+				fileIn = new FileInputStream(fileName);
+
+				in = new ObjectInputStream(fileIn);
+
+				RightPanel.lines = (ArrayList<Connections>) in.readObject();
+				RightPanel.rightPanelShapes = (ArrayList<Shapes>) in.readObject();
+				Frame.rightPanel.repaint();
 			}
 		} catch (IOException i) {
 			i.printStackTrace();
@@ -53,11 +51,9 @@ public class LoadFile extends JMenuItem implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		try {
 			loadFile();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		

@@ -1,9 +1,6 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.awt.geom.Rectangle2D;
 import java.io.Serializable;
 
@@ -17,7 +14,6 @@ public class Square extends Shapes implements Serializable {
 	double x,y;
 	Shapes bar1 = null, bar2 = null;
 	public Square(double x, double y) {
-		// TODO Auto-generated constructor stub
 		this.x = x - 50;
 		this.y = y - 50;
 	}
@@ -42,27 +38,22 @@ public class Square extends Shapes implements Serializable {
 
 	@Override
 	public boolean containsPoint(int x, int y) {
-		// TODO Auto-generated method stub
 		return square.contains(x, y);
 	}
 	@Override
 	public int getX() {
-		// TODO Auto-generated method stub
 		return (int) x;
 	}
 	@Override
 	public void setX(int x) {
-		// TODO Auto-generated method stub
 		this.x = x - 50;
 	}
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
 		return (int) y;
 	}
 	@Override
 	public void setY(int y) {
-		// TODO Auto-generated method stub
 		this.y = y - 50;
 	}
 	

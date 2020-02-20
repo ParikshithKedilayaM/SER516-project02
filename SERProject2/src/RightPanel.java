@@ -20,7 +20,7 @@ public class RightPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	public static Shapes originShape;
 	public static Shapes destShape;
-	public static int oX, oY, dX, dY;
+	public static int originX, originY, destinationX, destinationY;
 	public static boolean isSelected = false;
 	public static boolean isMoved = false;
 	public static RightPanelMouseListener rightPanelMouseListener = new RightPanelMouseListener();
@@ -58,7 +58,7 @@ public class RightPanel extends JPanel {
 		
 			if(isMoved) {
 				Line2D shape = new Line2D.Double();
-				shape.setLine(oX,oY,dX,dY);
+				shape.setLine(originX,originY,destinationX,destinationY);
 				Graphics2D g2 = (Graphics2D) graphics;
 				g2.draw(shape);
 			}

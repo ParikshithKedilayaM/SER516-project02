@@ -16,7 +16,6 @@ public class VerticalBar extends Shapes implements MouseListener, MouseMotionLis
 	Shape square = null;
 	double x,y;
 	public VerticalBar(double x, double y) {
-		// TODO Auto-generated constructor stub
 		this.x = x ;
 		this.y = y ;
 	}
@@ -37,62 +36,50 @@ public class VerticalBar extends Shapes implements MouseListener, MouseMotionLis
 
 	@Override
 	public boolean containsPoint(int x, int y) {
-		// TODO Auto-generated method stub
 		return square.contains(x, y);
 	}
 	@Override
 	public int getX() {
-		// TODO Auto-generated method stub
 		return (int) x;
 	}
 	@Override
 	public void setX(int x) {
-		// TODO Auto-generated method stub
 		this.x = x ;
 	}
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
 		return (int) y;
 	}
 	@Override
 	public void setY(int y) {
-		// TODO Auto-generated method stub
 		this.y = y ;
 	}
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 	

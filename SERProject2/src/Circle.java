@@ -1,6 +1,5 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.io.Serializable;
@@ -42,22 +41,18 @@ public class Circle extends Shapes implements Serializable{
 	}
 	@Override
 	public int getX() {
-		// TODO Auto-generated method stub
 		return (int) x;
 	}
 	@Override
 	public void setX(int x) {
-		// TODO Auto-generated method stub
 		this.x = x - 50;
 	}
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
 		return (int) y;
 	}
 	@Override
 	public void setY(int y) {
-		// TODO Auto-generated method stub
 		this.y = y - 50;
 	}
 

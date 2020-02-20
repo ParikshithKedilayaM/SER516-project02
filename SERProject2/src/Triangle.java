@@ -1,6 +1,5 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Shape;
 import java.awt.geom.Path2D;
 import java.io.Serializable;
 
@@ -14,7 +13,6 @@ public class Triangle extends Shapes implements Serializable {
 	Shapes dot1 = null, dot2 = null, dot3= null;
 	boolean isLineDrawnDot1 = false, isLineDrawnDot2 = false, isLineDrawnDot3 = false; 
 	public Triangle(double x, double y) {
-		// TODO Auto-generated constructor stub
 		this.x = x - 50;
 		this.y = y + 50;
 	}
@@ -47,27 +45,22 @@ public class Triangle extends Shapes implements Serializable {
 
 	@Override
 	public boolean containsPoint(int x, int y) {
-		// TODO Auto-generated method stub
 		return path.contains(x, y);
 	}
 	@Override
 	public int getX() {
-		// TODO Auto-generated method stub
 		return (int) x;
 	}
 	@Override
 	public void setX(int x) {
-		// TODO Auto-generated method stub
 		this.x = x -50 ;
 	}
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
 		return (int) y;
 	}
 	@Override
 	public void setY(int y) {
-		// TODO Auto-generated method stub
 		this.y = y + 50;
 	}
 	

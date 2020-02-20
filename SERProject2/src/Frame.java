@@ -1,11 +1,7 @@
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Shape;
 import java.awt.Toolkit;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 import javax.swing.JFrame;
 
 /**
