@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class LoadFile extends JMenuItem implements ActionListener{
 
@@ -20,6 +21,8 @@ public class LoadFile extends JMenuItem implements ActionListener{
 		ObjectInputStream in = null;
 		try {
 			JFileChooser chosenFile = new JFileChooser();
+			FileNameExtensionFilter filter = new FileNameExtensionFilter("SER516", "ser");
+			chosenFile.setFileFilter(filter);
 			int showOpenDialog  = chosenFile.showOpenDialog(null);
 			if (showOpenDialog == JFileChooser.APPROVE_OPTION) {
 			
