@@ -5,12 +5,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.Rectangle2D;
+import java.io.Serializable;
 
 /**
  *@author Raghavan
  *@version 1.0
  */
-public class Square extends Shapes  {
+public class Square extends Shapes implements Serializable {
 	
 	Shape square = null;
 	double x,y;

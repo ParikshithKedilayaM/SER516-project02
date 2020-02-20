@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Connections {
+public class Connections implements Serializable{
 	
 	int sourceX, sourceY, destX, destY;
 	Shapes originShape, destShape;

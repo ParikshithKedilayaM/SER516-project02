@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.Ellipse2D;
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.ListIterator;
 
@@ -13,7 +14,7 @@ import java.util.ListIterator;
  * @author Raghavan
  * @version 1.0
  */
-public class Dot extends Shapes implements MouseListener, MouseMotionListener {
+public class Dot extends Shapes implements MouseListener, MouseMotionListener, Serializable {
 	double x, y;
 	static public boolean isBarClicked = false;
 	static boolean isDotClicked = false, firstDotClicked = false;

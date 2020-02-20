@@ -2,12 +2,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.Path2D;
+import java.io.Serializable;
 
 /**
  * @author Rishika Bera
  * @version 1.0
  */
-public class Triangle extends Shapes {
+public class Triangle extends Shapes implements Serializable {
 	double x, y;
 	Path2D path = null;
 	Shapes dot1 = null, dot2 = null, dot3= null;

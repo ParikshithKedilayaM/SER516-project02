@@ -3,12 +3,13 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
+import java.io.Serializable;
 
 /**
  * @author Raghavan
  * @version 1.0
  */
-public class Circle extends Shapes {
+public class Circle extends Shapes implements Serializable{
 	double x, y;
 	Shape circle = null;
 	Shapes dot = null;
