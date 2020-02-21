@@ -15,16 +15,14 @@ import javax.swing.JFrame;
  */
 public class Frame extends JFrame {
 	private static final long serialVersionUID = 1L;
-	private final String title = "Team 1";
-	LeftPanel leftPanel;
-	public static RightPanel rightPanel;
-	static MenuBar menuBar;
-	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	private final String TITLE = "Team 1";
+	protected static RightPanel rightPanel;
+	private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
 	public Frame() {
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
 		setLayout(null);
-		setTitle(title);
+		setTitle(TITLE);
 		setBackground(Color.BLACK);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
@@ -34,7 +32,7 @@ public class Frame extends JFrame {
 	 */
 	private void createLeftPanel() {
 		try {
-			leftPanel = new LeftPanel();
+			LeftPanel leftPanel = new LeftPanel();
 			leftPanel.setBounds(0, 0, screenSize.width / 4, screenSize.height);
 			leftPanel.setVisible(true);
 			this.add(leftPanel);
@@ -63,8 +61,7 @@ public class Frame extends JFrame {
 	 * Adds a Menu to the Frame
 	 */
 	public void createMenu() {
-		menuBar = new MenuBar();
-		this.setJMenuBar(menuBar);
+		this.setJMenuBar(new MenuBar());
 	}
 
 	public static void main(String[] args) {
