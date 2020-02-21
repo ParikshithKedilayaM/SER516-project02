@@ -5,7 +5,7 @@
  * @author Parikshith Kedilaya Mallar
  * @version 1.0
  */
-public class DrawLine {
+public class Line {
 	private int shapeX, shapeY, lineX, lineY;
 	private Connections line;
 	private boolean isSourceShape = false, isDestShape = false;
