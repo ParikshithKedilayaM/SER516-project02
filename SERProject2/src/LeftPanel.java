@@ -8,7 +8,7 @@ import javax.swing.JPanel;
  * This class is used to create the panel on the left side
  * which has different shapes.
  * 
- * @author Raghavan
+ * @author Rishika Bera
  * @version 1.0
  */
 public class LeftPanel extends JPanel {

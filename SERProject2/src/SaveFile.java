@@ -4,9 +4,16 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
+
+
+/**
+ * Adding Save file functionality to save the shapes and connections in a file
+ * 
+ * @author Rishika Bera
+ * @version 1.0
+ */
 
 public class SaveFile extends JMenuItem implements ActionListener {
 	/**

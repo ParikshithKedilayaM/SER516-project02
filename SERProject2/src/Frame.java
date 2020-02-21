@@ -5,8 +5,13 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 /**
+ * Creates a Frame and adds two JPanels two the frame.
+ * 
  * @author Chandan Kiragadalu Javaregowda
  * @version 1.0
+ * 
+ * @author Raghavan
+ * @version 2.0
  */
 public class Frame extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -40,8 +45,7 @@ public class Frame extends JFrame {
 	}
 
 	/**
-	 * Create right panel to the frame paintComponent 
-	 * creates new shapes upon click
+	 * Create right panel to the frame paintComponent creates new shapes upon click
 	 */
 	private void createRightpanel() {
 		try {
@@ -54,19 +58,14 @@ public class Frame extends JFrame {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * Adds a Menu to the Frame
+	 */
 	public void createMenu() {
 		menuBar = new MenuBar();
 		this.setJMenuBar(menuBar);
 	}
-
-	/**
-	 * Method to update shapes and shapesMap lists. 
-	 * Used to track the shapes created and kind of shape created.
-	 * 
-	 * @param shape
-	 * @param shapesEnum
-	 */
 
 	public static void main(String[] args) {
 		Frame frame = new Frame();
@@ -75,5 +74,5 @@ public class Frame extends JFrame {
 		frame.createMenu();
 		frame.setVisible(true);
 	}
-	
+
 }

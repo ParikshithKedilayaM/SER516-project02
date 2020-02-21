@@ -1,7 +1,15 @@
 import java.io.Serializable;
 
-public class Connections implements Serializable{
-	
+/**
+ * This class has line information that requires source and destination end
+ * point
+ * 
+ * @author Mayank Kataruka
+ * @version 1.0
+ */
+
+public class Connections implements Serializable {
+
 	int sourceX, sourceY, destX, destY;
 	Shapes originShape, destShape;
 
@@ -41,7 +49,6 @@ public class Connections implements Serializable{
 		return destX;
 	}
 
-	
 	public void setDestX(int destX) {
 		this.destX = destX;
 	}
@@ -59,6 +66,5 @@ public class Connections implements Serializable{
 		return "Connections [sourceX=" + sourceX + ", sourceY=" + sourceY + ", destX=" + destX + ", destY=" + destY
 				+ ", originShape=" + originShape + ", destShape=" + destShape + "]";
 	}
-
 
 }
