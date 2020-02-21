@@ -13,15 +13,24 @@ import java.io.Serializable;
  */
 public class Circle extends Shapes implements Serializable {
 	private static final long serialVersionUID = 1L;
-	double x, y;
-	Shape circle = null;
-	Shapes dot = null;
-	boolean isLineDrawn = false;
+	private final int OFFSET = 50;
+	private double x, y;
+	private Shape circle = null;
+	private Shapes dot = null;
+	private boolean isLineDrawn = false;
 
 	public Circle(double x, double y) {
-		this.x = x - 50;
-		this.y = y - 50;
+		this.x = x - OFFSET;
+		this.y = y - OFFSET;
 
+	}
+
+	public Shapes getDot() {
+		return dot;
+	}
+
+	public void setDot(Shapes dot) {
+		this.dot = dot;
 	}
 
 	/**
@@ -58,7 +67,7 @@ public class Circle extends Shapes implements Serializable {
 
 	@Override
 	public void setX(int x) {
-		this.x = x - 50;
+		this.x = x - OFFSET;
 	}
 
 	@Override
@@ -68,12 +77,15 @@ public class Circle extends Shapes implements Serializable {
 
 	@Override
 	public void setY(int y) {
-		this.y = y - 50;
+		this.y = y - OFFSET;
 	}
 
-	@Override
-	public String toString() {
-		return "Circle [x=" + x + ", y=" + y + ", circle=" + circle + "]";
+	public boolean isLineDrawn() {
+		return isLineDrawn;
+	}
+
+	public void setLineDrawn(boolean isLineDrawn) {
+		this.isLineDrawn = isLineDrawn;
 	}
 
 }
