@@ -66,9 +66,4 @@ public class DrawLine {
 		this.isDestShape = isDestShape;
 	}
 
-	@Override
-	public String toString() {
-		return "DrawLine [shapeX=" + shapeX + ", shapeY=" + shapeY + ", lineX=" + lineX + ", lineY=" + lineY + ", line="
-				+ line + "]";
-	}
 }
