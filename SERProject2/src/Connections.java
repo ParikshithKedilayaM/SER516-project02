@@ -10,8 +10,9 @@ import java.io.Serializable;
 
 public class Connections implements Serializable {
 
-	int sourceX, sourceY, destX, destY;
-	Shapes originShape, destShape;
+	private static final long serialVersionUID = 1L;
+	private int sourceX, sourceY, destX, destY;
+	private Shapes originShape, destShape;
 
 	public Shapes getOriginShape() {
 		return originShape;
@@ -59,12 +60,6 @@ public class Connections implements Serializable {
 
 	public void setDestY(int destY) {
 		this.destY = destY;
-	}
-
-	@Override
-	public String toString() {
-		return "Connections [sourceX=" + sourceX + ", sourceY=" + sourceY + ", destX=" + destX + ", destY=" + destY
-				+ ", originShape=" + originShape + ", destShape=" + destShape + "]";
 	}
 
 }

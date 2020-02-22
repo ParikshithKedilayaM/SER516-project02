@@ -202,7 +202,7 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
 	private void setIsLineDrawn(Shapes shape, int x, int y) {
 		if (shape instanceof Circle) {
 			Circle circle = ((Circle) shape);
-			circle.isLineDrawn = true;
+			circle.setLineDrawn(true);
 		} else if (shape instanceof Triangle) {
 			Triangle triangle = (Triangle) shape;
 			if (triangle.dot1.containsPoint(x, y)) {
@@ -217,8 +217,8 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
 
 	private boolean getIsLineDrawn(Shapes shape, int x, int y) {
 		if (shape instanceof Circle) {
-			Circle temp = ((Circle) shape);
-			return temp.isLineDrawn;
+			Circle circle = ((Circle) shape);
+			return circle.isLineDrawn();
 		} else if (shape instanceof Triangle) {
 			Triangle triangle = (Triangle) shape;
 			if (triangle.dot1.containsPoint(x, y)) {
@@ -238,7 +238,7 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
 		while (shapes.hasNext()) {
 			Shapes sh = shapes.next();
 			if (sh.containsPoint(e.getX(), e.getY())) {
-				if (sh instanceof Circle && ((Circle) sh).dot.containsPoint(e.getX(), e.getY())) {
+				if (sh instanceof Circle && ((Circle) sh).getDot().containsPoint(e.getX(), e.getY())) {
 					isDotClicked = true;
 					break;
 				}
