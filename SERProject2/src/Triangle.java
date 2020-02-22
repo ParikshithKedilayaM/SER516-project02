@@ -8,10 +8,12 @@ import java.io.Serializable;
  * @version 1.0
  */
 public class Triangle extends Shapes implements Serializable {
-	double x, y;
-	Path2D path = null;
-	Shapes dot1 = null, dot2 = null, dot3= null;
-	boolean isLineDrawnDot1 = false, isLineDrawnDot2 = false, isLineDrawnDot3 = false; 
+
+	private static final long serialVersionUID = 1L;
+	private double x, y;
+	private Path2D path = null;
+	private Shapes dot1 = null, dot2 = null, dot3= null;
+	private boolean isLineDrawnDot1 = false, isLineDrawnDot2 = false, isLineDrawnDot3 = false; 
 	public Triangle(double x, double y) {
 		this.x = x - 50;
 		this.y = y + 50;
@@ -62,6 +64,42 @@ public class Triangle extends Shapes implements Serializable {
 	@Override
 	public void setY(int y) {
 		this.y = y + 50;
+	}
+	public Shapes getDot1() {
+		return dot1;
+	}
+	public void setDot1(Shapes dot1) {
+		this.dot1 = dot1;
+	}
+	public Shapes getDot2() {
+		return dot2;
+	}
+	public void setDot2(Shapes dot2) {
+		this.dot2 = dot2;
+	}
+	public Shapes getDot3() {
+		return dot3;
+	}
+	public void setDot3(Shapes dot3) {
+		this.dot3 = dot3;
+	}
+	public boolean isLineDrawnDot1() {
+		return isLineDrawnDot1;
+	}
+	public void setLineDrawnDot1(boolean isLineDrawnDot1) {
+		this.isLineDrawnDot1 = isLineDrawnDot1;
+	}
+	public boolean isLineDrawnDot2() {
+		return isLineDrawnDot2;
+	}
+	public void setLineDrawnDot2(boolean isLineDrawnDot2) {
+		this.isLineDrawnDot2 = isLineDrawnDot2;
+	}
+	public boolean isLineDrawnDot3() {
+		return isLineDrawnDot3;
+	}
+	public void setLineDrawnDot3(boolean isLineDrawnDot3) {
+		this.isLineDrawnDot3 = isLineDrawnDot3;
 	}
 	
 }

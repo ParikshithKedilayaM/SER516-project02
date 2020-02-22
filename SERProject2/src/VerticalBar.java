@@ -13,8 +13,8 @@ import java.io.Serializable;
  */
 public class VerticalBar extends Shapes implements MouseListener, MouseMotionListener, Serializable {
 	private static final long serialVersionUID = 1L;
-	Shape square = null;
-	double x, y;
+	private Shape square = null;
+	private double x, y;
 
 	public VerticalBar(double x, double y) {
 		this.x = x;

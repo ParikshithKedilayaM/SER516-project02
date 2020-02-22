@@ -13,13 +13,15 @@ import java.io.Serializable;
 
 public class Square extends Shapes implements Serializable {
 
-	Shape square = null;
-	double x, y;
-	Shapes bar1 = null, bar2 = null;
+	private static final long serialVersionUID = 1L;
+	private Shape square = null;
+	private double x, y;
+	private Shapes leftBar = null, rightBar = null;
+	private final int OFFSET = 50;
 
 	public Square(double x, double y) {
-		this.x = x - 50;
-		this.y = y - 50;
+		this.x = x - OFFSET;
+		this.y = y - OFFSET;
 	}
 
 	/**
@@ -33,10 +35,10 @@ public class Square extends Shapes implements Serializable {
 	public void drawShape(Graphics graphic) {
 		square = new Rectangle2D.Double(x, y, 200, 200);
 		Graphics2D graphics2 = (Graphics2D) graphic;
-		bar1 = new VerticalBar(x + 10, y + 10);
-		bar1.drawShape(graphics2);
-		bar2 = new VerticalBar(x + 180, y + 10);
-		bar2.drawShape(graphics2);
+		leftBar = new VerticalBar(x + 10, y + 10);
+		leftBar.drawShape(graphics2);
+		rightBar = new VerticalBar(x + 180, y + 10);
+		rightBar.drawShape(graphics2);
 		graphics2.draw(square);
 
 	}
@@ -53,7 +55,7 @@ public class Square extends Shapes implements Serializable {
 
 	@Override
 	public void setX(int x) {
-		this.x = x - 50;
+		this.x = x - OFFSET;
 	}
 
 	@Override
@@ -63,7 +65,39 @@ public class Square extends Shapes implements Serializable {
 
 	@Override
 	public void setY(int y) {
-		this.y = y - 50;
+		this.y = y - OFFSET;
+	}
+
+	public Shape getSquare() {
+		return square;
+	}
+
+	public void setSquare(Shape square) {
+		this.square = square;
+	}
+	
+	public Shapes getLeftBar() {
+		return leftBar;
+	}
+
+	public void setLeftBar(Shapes leftBar) {
+		this.leftBar = leftBar;
+	}
+
+	public Shapes getRightBar() {
+		return rightBar;
+	}
+
+	public void setRightBar(Shapes rightBar) {
+		this.rightBar = rightBar;
+	}
+
+	public void setX(double x) {
+		this.x = x;
+	}
+
+	public void setY(double y) {
+		this.y = y;
 	}
 
 }
