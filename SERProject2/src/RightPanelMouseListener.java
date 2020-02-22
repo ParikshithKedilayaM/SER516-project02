@@ -12,11 +12,10 @@ import java.util.ListIterator;
  * @author Parikshit
  * @version 1.0
  */
-public class RightPanelMouseListener extends RightPanel implements MouseListener, MouseMotionListener {
-	private static final long serialVersionUID = 1L;
+public class RightPanelMouseListener implements MouseListener, MouseMotionListener {
 
-	static Shapes selectedShape;
-	List<Line> linesList = new ArrayList<Line>();
+	private Shapes selectedShape;
+	private List<Line> linesList = new ArrayList<Line>();
 
 	/**
 	 * Change the coordinates of the connection line when a shape on the right panel

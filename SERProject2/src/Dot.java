@@ -16,12 +16,12 @@ import java.util.ListIterator;
  */
 public class Dot extends Shapes implements MouseListener, MouseMotionListener, Serializable {
 	private static final long serialVersionUID = 1L;
-	double x, y;
-	static public boolean isBarClicked = false;
-	static boolean isDotClicked = false, firstDotClicked = false;
-	static int sourceX, sourceY, destinationX, destinationY;
-	static Shapes firstShape, secondShape;
-	Shape circle = null;
+	private double x, y;
+	private Shape circle = null;
+	private int sourceX, sourceY, destinationX, destinationY;
+	private boolean firstDotClicked = false;
+	private Shapes firstShape, secondShape;
+	protected static boolean isBarClicked = false, isDotClicked = false;
 
 	public Dot(double x, double y) {
 		this.x = x;
@@ -206,12 +206,12 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
 			circle.setLineDrawn(true);
 		} else if (shape instanceof Triangle) {
 			Triangle triangle = (Triangle) shape;
-			if (triangle.dot1.containsPoint(x, y)) {
-				triangle.isLineDrawnDot1 = true;
-			} else if (triangle.dot2.containsPoint(x, y)) {
-				triangle.isLineDrawnDot2 = true;
-			} else if (triangle.dot3.containsPoint(x, y)) {
-				triangle.isLineDrawnDot3 = true;
+			if (triangle.getDot1().containsPoint(x, y)) {
+				triangle.setLineDrawnDot1(true);
+			} else if (triangle.getDot2().containsPoint(x, y)) {
+				triangle.setLineDrawnDot2(true);
+			} else if (triangle.getDot3().containsPoint(x, y)) {
+				triangle.setLineDrawnDot3(true);
 			}
 		}
 	}
@@ -222,12 +222,12 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
 			return circle.isLineDrawn();
 		} else if (shape instanceof Triangle) {
 			Triangle triangle = (Triangle) shape;
-			if (triangle.dot1.containsPoint(x, y)) {
-				return triangle.isLineDrawnDot1;
-			} else if (triangle.dot2.containsPoint(x, y)) {
-				return triangle.isLineDrawnDot2;
-			} else if (triangle.dot3.containsPoint(x, y)) {
-				return triangle.isLineDrawnDot3;
+			if (triangle.getDot1().containsPoint(x, y)) {
+				return triangle.isLineDrawnDot1();
+			} else if (triangle.getDot2().containsPoint(x, y)) {
+				return triangle.isLineDrawnDot2();
+			} else if (triangle.getDot3().containsPoint(x, y)) {
+				return triangle.isLineDrawnDot3();
 			}
 		}
 		return false;
@@ -244,15 +244,15 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
 					break;
 				}
 
-				else if (sh instanceof Triangle && (((Triangle) sh).dot1.containsPoint(e.getX(), e.getY())
-						|| ((Triangle) sh).dot2.containsPoint(e.getX(), e.getY())
-						|| ((Triangle) sh).dot3.containsPoint(e.getX(), e.getY()))) {
+				else if (sh instanceof Triangle && (((Triangle) sh).getDot1().containsPoint(e.getX(), e.getY())
+						|| ((Triangle) sh).getDot2().containsPoint(e.getX(), e.getY())
+						|| ((Triangle) sh).getDot3().containsPoint(e.getX(), e.getY()))) {
 					isDotClicked = true;
 					break;
 				}
 
-				else if (sh instanceof Square && (((Square) sh).bar1.containsPoint(e.getX(), e.getY())
-						|| ((Square) sh).bar2.containsPoint(e.getX(), e.getY()))) {
+				else if (sh instanceof Square && (((Square) sh).getLeftBar().containsPoint(e.getX(), e.getY())
+						|| ((Square) sh).getRightBar().containsPoint(e.getX(), e.getY()))) {
 					isBarClicked = true;
 					break;
 				}

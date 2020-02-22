@@ -19,16 +19,16 @@ import javax.swing.JPanel;
  * @version 2.0
  */
 public class RightPanel extends JPanel {
+	private static final long serialVersionUID = 1L;
 	public static List<Shapes> rightPanelShapes = new ArrayList<Shapes>();
 	public static List<Connections> lines = new ArrayList<Connections>();
-	private static final long serialVersionUID = 1L;
 	public static Shapes originShape;
 	public static Shapes destShape;
 	public static int originX, originY, destinationX, destinationY;
 	public static boolean isSelected = false;
 	public static boolean isMoved = false;
-	public static RightPanelMouseListener rightPanelMouseListener = new RightPanelMouseListener();
-	public static Dot dot = new Dot();
+	private RightPanelMouseListener rightPanelMouseListener = new RightPanelMouseListener();
+	private Dot dot = new Dot();
 
 	public RightPanel() {
 		this.setBackground(Color.WHITE);
