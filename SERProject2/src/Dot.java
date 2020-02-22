@@ -15,6 +15,7 @@ import java.util.ListIterator;
  * @version 1.0
  */
 public class Dot extends Shapes implements MouseListener, MouseMotionListener, Serializable {
+	private static final long serialVersionUID = 1L;
 	double x, y;
 	static public boolean isBarClicked = false;
 	static boolean isDotClicked = false, firstDotClicked = false;
