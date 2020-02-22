@@ -36,8 +36,8 @@ public class SaveFile extends JMenuItem implements ActionListener {
 			}
 			fileOut = new FileOutputStream(new File(fileName));
 			out = new ObjectOutputStream(fileOut);
-			out.writeObject(RightPanel.lines);
-			out.writeObject(RightPanel.rightPanelShapes);
+			out.writeObject(RightPanel.getLines());
+			out.writeObject(RightPanel.getRightPanelShapes());
 			fileOut.flush();
 		} catch (IOException i) {
 			i.printStackTrace();

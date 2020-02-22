@@ -37,8 +37,8 @@ public class LoadFile extends JMenuItem implements ActionListener {
 				fileName = chosenFile.getSelectedFile().getAbsolutePath();
 				fileIn = new FileInputStream(fileName);
 				in = new ObjectInputStream(fileIn);
-				RightPanel.lines = (ArrayList<Connections>) in.readObject();
-				RightPanel.rightPanelShapes = (ArrayList<Shapes>) in.readObject();
+				RightPanel.setLines((ArrayList<Connections>) in.readObject());
+				RightPanel.setRightPanelShapes((ArrayList<Shapes>) in.readObject());
 				Frame.rightPanel.repaint();
 			}
 		} catch (IOException i) {

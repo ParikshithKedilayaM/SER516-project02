@@ -40,7 +40,7 @@ public class RightPanelMouseListener implements MouseListener, MouseMotionListen
 				nextLine.getLine().setDestY(nextLine.getLineY() - (nextLine.getShapeY() - selectedShape.getY()));
 			}
 		}
-		RightPanel.isSelected = false;
+		RightPanel.setSelected(false);
 		Frame.rightPanel.repaint();
 	}
 
@@ -55,17 +55,17 @@ public class RightPanelMouseListener implements MouseListener, MouseMotionListen
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if (!Dot.isDotClicked && !RightPanel.isMoved && !Dot.isBarClicked) {
+		if (!Dot.isDotClicked && !RightPanel.isMoved() && !Dot.isBarClicked) {
 			int x = e.getX();
 			int y = e.getY();
 			ShapesEnum selectedShape = LeftPanelMouseListener.getSelectedShape();
 			if (selectedShape == ShapesEnum.SQUARE) {
-				RightPanel.rightPanelShapes.add(new Square(x, y));
+				RightPanel.getRightPanelShapes().add(new Square(x, y));
 			} else if (selectedShape == ShapesEnum.TRIANGLE) {
-				RightPanel.rightPanelShapes.add(new Triangle(x, y));
+				RightPanel.getRightPanelShapes().add(new Triangle(x, y));
 			} else if (selectedShape == ShapesEnum.CIRCLE) {
 				Circle c = new Circle(x, y);
-				RightPanel.rightPanelShapes.add(c);
+				RightPanel.getRightPanelShapes().add(c);
 			}
 			Frame.rightPanel.repaint();
 		}
@@ -79,7 +79,7 @@ public class RightPanelMouseListener implements MouseListener, MouseMotionListen
 	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
-		ListIterator<Shapes> shapes = RightPanel.rightPanelShapes.listIterator();
+		ListIterator<Shapes> shapes = RightPanel.getRightPanelShapes().listIterator();
 		while (shapes.hasNext()) {
 			Shapes sh = shapes.next();
 			if (sh.containsPoint(e.getX(), e.getY())) {
@@ -87,7 +87,7 @@ public class RightPanelMouseListener implements MouseListener, MouseMotionListen
 			}
 
 		}
-		ListIterator<Connections> lines = RightPanel.lines.listIterator();
+		ListIterator<Connections> lines = RightPanel.getLines().listIterator();
 		while (lines.hasNext()) {
 			Connections line = lines.next();
 			if (line.getOriginShape().equals(selectedShape)) {
