@@ -16,6 +16,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class LoadFile extends JMenuItem implements ActionListener{
 
+	private static final long serialVersionUID = 1L;
+
 	public LoadFile(String label) {
 		super(label);
 	}
@@ -26,16 +28,13 @@ public class LoadFile extends JMenuItem implements ActionListener{
 		ObjectInputStream in = null;
 		try {
 			JFileChooser chosenFile = new JFileChooser();
-			FileNameExtensionFilter filter = new FileNameExtensionFilter("SER516", "ser");
+			FileNameExtensionFilter filter = new FileNameExtensionFilter(".ser", "ser");
 			chosenFile.setFileFilter(filter);
 			int showOpenDialog  = chosenFile.showOpenDialog(null);
 			if (showOpenDialog == JFileChooser.APPROVE_OPTION) {
-
 				fileName = chosenFile.getSelectedFile().getAbsolutePath();
 				fileIn = new FileInputStream(fileName);
-
 				in = new ObjectInputStream(fileIn);
-
 				RightPanel.lines = (ArrayList<Connections>) in.readObject();
 				RightPanel.rightPanelShapes = (ArrayList<Shapes>) in.readObject();
 				Frame.rightPanel.repaint();
@@ -61,7 +60,5 @@ public class LoadFile extends JMenuItem implements ActionListener{
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
-		
 	}
 }
