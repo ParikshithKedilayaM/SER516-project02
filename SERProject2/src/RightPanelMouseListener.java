@@ -16,7 +16,7 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 	private static final long serialVersionUID = 1L;
 
 	static Shapes selectedShape;
-	List<DrawLine> linesList = new ArrayList<DrawLine>();
+	List<Line> linesList = new ArrayList<Line>();
 
 	/**
 	 * Change the coordinates of the connection line when a shape on the right panel
@@ -30,9 +30,9 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 			selectedShape.setX(e.getX());
 			selectedShape.setY(e.getY());
 		}
-		ListIterator<DrawLine> linesListIter = linesList.listIterator();
+		ListIterator<Line> linesListIter = linesList.listIterator();
 		while (linesListIter.hasNext()) {
-			DrawLine nextLine = linesListIter.next();
+			Line nextLine = linesListIter.next();
 			if (nextLine.isSourceShape()) {
 				nextLine.getLine().setSourceX(nextLine.getLineX() - (nextLine.getShapeX() - selectedShape.getX()));
 				nextLine.getLine().setSourceY(nextLine.getLineY() - (nextLine.getShapeY() - selectedShape.getY()));
@@ -92,7 +92,7 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 		while (lines.hasNext()) {
 			Connections line = lines.next();
 			if (line.getOriginShape().equals(selectedShape)) {
-				DrawLine drawline = new DrawLine();
+				Line drawline = new Line();
 				drawline.setLineX(line.getSourceX());
 				drawline.setLineY(line.getSourceY());
 				drawline.setShapeX(selectedShape.getX());
@@ -101,7 +101,7 @@ public class RightPanelMouseListener extends RightPanel implements MouseListener
 				drawline.setSourceShape(true);
 				linesList.add(drawline);
 			} else if (line.getDestShape().equals(selectedShape)) {
-				DrawLine drawline = new DrawLine();
+				Line drawline = new Line();
 				drawline.setLineX(line.getDestX());
 				drawline.setLineY(line.getDestY());
 				drawline.setShapeX(selectedShape.getX());
